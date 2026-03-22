@@ -4,3 +4,13 @@ data/
 LOL
 CLAUDE.md
 .claude
+
+fyi.txt
+
+outputs/features/
+outputs/scores/
+outputs/figures/scores/
+
+src/__pycache__/
+**/__pycache__/
+*.pyc

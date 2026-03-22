@@ -1,0 +1,4 @@
+farm,n_anomaly_events,coverage,earliness_median_h,earliness_mean_h,earliness_source,accuracy_auc,far,reliability
+Wind Farm A,12,1.0,-148.8,-132.7,Tier1,0.6744,0.05,0.95
+Wind Farm B,3,1.0,-152.0,-275.3,Tier2(fallback),0.4403,0.05,0.95
+Wind Farm C,3,1.0,-106.7,-165.3,Tier1,0.7743,0.05,0.95
