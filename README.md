@@ -105,5 +105,5 @@ outputs/
 └── figures/                # Static plots
 data/ (not saved due to file size)
 ├── raw/                    # `CARE_To_Compare.zip` will go here
-├── processed/              # After the 
+├── processed/              # Processed data for the sequence will be put here
 ```
