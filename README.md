@@ -11,7 +11,7 @@ Data comes from the **CARE to Compare** SCADA dataset, hosted on Zenodo:
 
 > https://zenodo.org/records/15846963
 
-Download and extract `CARE_To_Compare.zip` into the project running anything. The dataset contains three wind farms (A, B, C) across 36 turbines, 95 labelled events (44 anomaly / 51 normal), and up to 957 sensors per turbine at 10-minute resolution — roughly 89 years of total data.
+Download and extract `CARE_To_Compare.zip` into the project before running anything. The dataset contains three wind farms (A, B, C) across 36 turbines, 95 labelled events (44 anomaly / 51 normal), and up to 957 sensors per turbine at 10-minute resolution — roughly 89 years of total data.
 
 
 ## Our Approach
