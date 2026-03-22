@@ -1,13 +1,9 @@
 # Wind Turbine Anomaly Detection
 **DSMLC × Enbridge Competition 2026 — CARE to Compare Dataset**
 
----
-
 ## The Problem
 
 Wind turbines operate in harsh environments where undetected faults can cause costly downtime and catastrophic failures. **Early anomaly detection** gives maintenance teams time to act before a failure occurs — reducing repair costs and maximising turbine uptime.
-
----
 
 ## Dataset
 
@@ -15,9 +11,8 @@ Data comes from the **CARE to Compare** SCADA dataset, hosted on Zenodo:
 
 > https://zenodo.org/records/15846963
 
-Download and extract `CARE_To_Compare.zip` into the project root before running anything. The dataset contains three wind farms (A, B, C) across 36 turbines, 95 labelled events (44 anomaly / 51 normal), and up to 957 sensors per turbine at 10-minute resolution — roughly 89 years of total data.
+Download and extract `CARE_To_Compare.zip` into the project running anything. The dataset contains three wind farms (A, B, C) across 36 turbines, 95 labelled events (44 anomaly / 51 normal), and up to 957 sensors per turbine at 10-minute resolution — roughly 89 years of total data.
 
----
 
 ## Our Approach
 
@@ -31,7 +26,6 @@ We built a multi-model ensemble combining three complementary detectors:
 
 Models are trained exclusively on the `train` split. An ensemble score (CUSUM 40% · AE 35% · IF 25%) is computed and threshold crossings flag **Tier 1** (CUSUM early-warning) and **Tier 2** (ensemble confirmed) alerts.
 
----
 
 ## Results
 
@@ -43,14 +37,13 @@ Models are trained exclusively on the `train` split. An ensemble score (CUSUM 40
 
 100% of anomaly events were detected across all farms at a 5% false alarm rate. The earliest single detection was **Farm C Event 67 — flagged 376 hours (over 15 days) before failure.**
 
----
 
 ## Running the Pipeline
 
-Run the steps below **in order**. Each script writes its outputs to `outputs/` for the next step to consume.
+Perform the steps below **in order**. Each script writes its outputs to `outputs/` for the next step to consume.
 
 ### Step 1 — Extract Data
-Unzip the dataset into the project root so the following structure exists:
+Unzip the dataset into data/raw (see structure below) so the following exists:
 ```
 CARE_To_Compare/
 ├── Wind Farm A/
@@ -94,21 +87,23 @@ streamlit run src/dashboard.py
 ```
 Launches the interactive dashboard for exploring results.
 
----
 
 ## Project Structure
 
 ```
 src/
-├── thermal-eda.py          # Step 2 — EDA
-├── feature_engineering.py  # Step 3 — Feature engineering
-├── ensemble.py             # Step 4 — Model training & scoring
-├── evaluate.py             # Step 5 — CARE score evaluation
-├── visualize_scores.py     # Step 6 — Static score plots
-└── dashboard.py            # Step 7 — Interactive dashboard
+├── thermal-eda.py          # Sequence 1 — EDA
+├── feature_engineering.py  # Sequence 2 — Feature engineering
+├── ensemble.py             # Sequence 3 — Model training & scoring
+├── evaluate.py             # Sequence 4 — CARE score evaluation
+├── visualize_scores.py     # Sequence 5 — Static score plots
+└── dashboard.py            # Sequence 6 — Interactive dashboard
 outputs/
 ├── scores/                 # Per-event anomaly score CSVs + detection summary
 ├── features/               # Feature importance CSVs
 ├── evaluation/             # CARE score results
 └── figures/                # Static plots
+data/ (not saved due to file size)
+├── raw/                    # `CARE_To_Compare.zip` will go here
+├── processed/              # After the 
 ```
